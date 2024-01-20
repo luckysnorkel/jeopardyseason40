@@ -162,15 +162,15 @@ The analysis of metacategory performance highlights areas of strength and opport
 |metacategory|questioncount|percentattempt|totalpercentcorrect|percentcorrectofattempted|
 |------------|-------------|--------------|-------------------|-------------------------|
 |Words       |837          |63.56         |61.17              |96.24                    |
-|History     |493          |38.54         |30.63              |79.48                    |
+|**History**     |**493**          |**38.54**         |**30.63**              |**79.48**                    |
 |Science     |347          |57.06         |51.01              |89.40                    |
-|Geography   |315          |42.22         |35.56              |84.23                    |
+|**Geography**   |**315**          |**42.22**         |**35.56**              |**84.23**                    |
 |Literature  |302          |51.32         |46.03              |89.69                    |
 |People      |265          |47.92         |44.91              |93.72                    |
 |Music       |265          |69.43         |66.04              |95.12                    |
 |Film        |225          |67.56         |65.78              |97.37                    |
-|Pop Culture |208          |73.56         |71.15              |96.72                    |
-|Food        |187          |77.54         |73.26              |94.48                    |
+|*Pop Culture* |*208*         |*73.56*         |*71.15*             |*96.72*                  |
+|*Food*        |*187*         |*77.54*         |*73.26*              |*94.48*                    |
 |Sports      |182          |38.46         |32.97              |85.73                    |
 |Crafts & Hobbies|126          |61.90         |55.56              |89.76                    |
 |Culture     |117          |46.15         |42.74              |92.61                    |
@@ -178,10 +178,10 @@ The analysis of metacategory performance highlights areas of strength and opport
 |Mathematics |70           |44.29         |41.43              |93.54                    |
 |Religion    |67           |34.33         |31.34              |91.29                    |
 |Art         |63           |47.62         |38.10              |80.01                    |
-|Languages   |54           |72.22         |70.37              |97.44                    |
-|Television  |54           |72.22         |70.37              |97.44                    |
+|*Languages*   |*54*           |*72.22*         |*70.37*              |*97.44*                    |
+|*Television*  |*54*           |*72.22*         |*70.37*              |*97.44*                    |
 |Business    |51           |60.78         |54.90              |90.33                    |
-|Politics    |48           |37.50         |25.00              |66.67                    |
+|**Politics**    |**48**           |**37.50**         |**25.00**              |**66.67**                    |
 |Architecture|45           |35.56         |31.11              |87.49                    |
 |Quotes      |40           |45.00         |35.00              |77.78                    |
 |Mythology   |40           |52.50         |50.00              |95.24                    |
@@ -206,6 +206,8 @@ The analysis of metacategory performance highlights areas of strength and opport
 
 #### Scoring Implications
 Evaluating the scoring impact by Metacategory reveals significant potential earnings left on the table. For Words, History and Geography, I lose out on an average of $4595, $4327, and $2820 per game, respectively. The large earnings gap in Words was particularly surprising to me, since I considered it to be one of my stronger areas prior to this analysis. But since it shows up so often (two full categories per game, on average!), the clues I'm not confident about quickly add up.
+
+![Screenshot](avgleftpergame.png)
 
 When combined, those three Metacategories make up 36.45% of my per-game missed earnings. Even a 10% improvement in each would raise my Coryat average by nearly $1200. A 28% improvement would bring my Coryat average just past $25,000, the lower threshold for competitiveness. This works out to roughly 1-2 additional correct responses per game in each category. This certainly feels attainable!
 
