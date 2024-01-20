@@ -73,7 +73,7 @@ The analysis of metacategory performance highlights areas of strength and opport
 
 **Strong Performance:** Notable confidence and success in Pop Culture (73.56%/96.72%), Food (77.54%/94.48%), Languages & Television (both at 72.22%/97.44%). I'm not particularly surprised by any of these, as they are all subjects that I naturally gravitate toward in my spare time.
 
-**Areas for Improvement:** Lower confidence/success rates in "History" (38.54%/79.48%), "Politics" (37.5%/66.67%), and "Geography" (42.22%/84.23%), suggesting these as key areas for focused study.
+**Areas for Improvement:** Lower confidence/success rates in History (38.54%/79.48%), Politics (37.5%/66.67%), and Geography (42.22%/84.23%), suggesting these as key areas for focused study.
 
 #### Scoring Implications
 Evaluating the scoring impact in some of the most frequent Metacategories reveals significant potential earnings left on the table. For Words, History and Geography, I lose out on an average of $4613, $4340, and $2828 per game, respectively. The large earnings gap in Words was particularly surprising to me, since I considered it to be one of my stronger areas prior to this analysis. But since it shows up so often (two full categories per game, on average!), the clues I'm not confident about quickly add up.
