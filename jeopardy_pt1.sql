@@ -1,6 +1,6 @@
 -- Overall percentage of correct
 SELECT SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CountCorrect,
-	ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*),2) AS PercentCorrect
+	ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*),2) AS PercentCorrect
 FROM jeopardy_data;
 
 -- Average Responses Overall
@@ -21,7 +21,7 @@ FROM AnswerBreakdown;
 SELECT Round,
 	COUNT(*) AS Total,
 	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CountCorrect,
-	ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*),2) AS PercentCorrect
+	ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*),2) AS PercentCorrect
 FROM jeopardy_data
 GROUP BY Round;
 
@@ -69,13 +69,13 @@ FROM jeopardy_coryats;
 
 -- Performance in DDs
 SELECT COUNT(*) AS Total, SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectAnswers,
-ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
+ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
 FROM jeopardy_data
 WHERE DD = 'True';
 
 -- Performance in DDs by Metacategory
 SELECT Metacategory, COUNT(*) AS Total, SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectAnswers,
-ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
+ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
 FROM jeopardy_data
 WHERE DD = 'True'
 GROUP BY Metacategory
@@ -83,13 +83,13 @@ ORDER BY total DESC, percentage;
 
 -- Performance in FJ
 SELECT COUNT(*) AS Total, SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectAnswers,
-ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
+ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
 FROM jeopardy_data
 WHERE Round = 'Final Jeopardy!';
 
 -- Performance in FJ by Metacategory
 SELECT Metacategory, COUNT(*) AS Total, SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectAnswers,
-ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
+ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
 FROM jeopardy_data
 WHERE Round = 'Final Jeopardy!'
 GROUP BY Metacategory
