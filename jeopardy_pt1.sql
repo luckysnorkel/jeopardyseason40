@@ -1,6 +1,6 @@
 -- Overall percentage of correct
 SELECT SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CountCorrect,
-	ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*),2) AS PercentCorrect
+	ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*),2) AS PercentCorrect
 FROM jeopardy_data;
 
 -- Average Responses Overall
@@ -21,7 +21,7 @@ FROM AnswerBreakdown;
 SELECT Round,
 	COUNT(*) AS Total,
 	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CountCorrect,
-	ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*),2) AS PercentCorrect
+	ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*),2) AS PercentCorrect
 FROM jeopardy_data
 GROUP BY Round;
 
@@ -53,12 +53,12 @@ ORDER BY QuestionCount DESC;
 -- Confidence & Win Rate by Metacategory
 SELECT Metacategory,
 	COUNT(*) AS QuestionCount,
-	ROUND(100 * SUM(CASE WHEN Response = 'Did Not Ring In' THEN 0 ELSE 1 END) / COUNT(*), 2) AS PercentAttempt,
-	ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS TotalPercentCorrect,
-	ROUND(100*(ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) / ROUND(100 * SUM(CASE WHEN Response = 'Did Not Ring In' THEN 0 ELSE 1 END) / COUNT(*), 2)),2) AS PercentCorrectofAttempted
+	ROUND(100.0 * SUM(CASE WHEN Response = 'Did Not Ring In' THEN 0 ELSE 1 END) / COUNT(*), 2) AS PercentAttempt,
+	ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS TotalPercentCorrect,
+	ROUND(100.0 *(ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) / ROUND(100.0 * SUM(CASE WHEN Response = 'Did Not Ring In' THEN 0 ELSE 1 END) / COUNT(*), 2)),2) AS PercentCorrectofAttempted
 FROM jeopardy_data
 GROUP BY Metacategory
-HAVING (ROUND(100 * SUM(CASE WHEN Response = 'Did Not Ring In' THEN 0 ELSE 1 END) / COUNT(*), 2)) != 0
+HAVING (ROUND(100.0 * SUM(CASE WHEN Response = 'Did Not Ring In' THEN 0 ELSE 1 END) / COUNT(*), 2)) != 0
 ORDER BY QuestionCount DESC, PercentAttempt, TotalPercentCorrect DESC;
 
 -- Coryat Average and Ranges
@@ -69,13 +69,13 @@ FROM jeopardy_coryats;
 
 -- Performance in DDs
 SELECT COUNT(*) AS Total, SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectAnswers,
-ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
+ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
 FROM jeopardy_data
 WHERE DD = 'True';
 
 -- Performance in DDs by Metacategory
 SELECT Metacategory, COUNT(*) AS Total, SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectAnswers,
-ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
+ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
 FROM jeopardy_data
 WHERE DD = 'True'
 GROUP BY Metacategory
@@ -83,13 +83,13 @@ ORDER BY total DESC, percentage;
 
 -- Performance in FJ
 SELECT COUNT(*) AS Total, SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectAnswers,
-ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
+ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
 FROM jeopardy_data
 WHERE Round = 'Final Jeopardy!';
 
 -- Performance in FJ by Metacategory
 SELECT Metacategory, COUNT(*) AS Total, SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectAnswers,
-ROUND(100 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
+ROUND(100.0 * SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percentage
 FROM jeopardy_data
 WHERE Round = 'Final Jeopardy!'
 GROUP BY Metacategory
@@ -133,25 +133,8 @@ SELECT ROUND(sum((IncorrectValue+DNRValue)/80),0) AS TotalLeft
 FROM MetaValues
 ;
 
--- Average amount left on table in Words, History, Geography
-WITH MetaValuesTop3 AS (SELECT Game, Metacategory,
-	COUNT(Response) AS TotalResponse,
-	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectCount,
-	SUM(CASE WHEN Response = 'Correct' THEN Value ELSE 0 END) AS CorrectValue,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 1 ELSE 0 END) AS IncorrectCount,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 2*Value ELSE 0 END) AS IncorrectValue,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN 1 ELSE 0 END) AS DNRCount,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN Value ELSE 0 END) AS DNRValue
-FROM jeopardy_data
-WHERE Metacategory IN ('Words', 'History', 'Geography')
-GROUP BY Game, Metacategory)
-SELECT Metacategory, ROUND(SUM(IncorrectValue+DNRValue)/80,0) AS TotalLeft
-FROM MetaValuesTop3
-GROUP BY Metacategory
-;
-
--- Average number of questions going unanswered or incorrectly answered per game (Words, History, Geography)
-WITH MetaValuesTop3 AS 
+--Average total amount left on table per game by Metacategory
+WITH MetaValues AS 
 	(SELECT Game, 
 	Metacategory,
 	COUNT(Response) AS TotalResponse,
@@ -162,10 +145,30 @@ WITH MetaValuesTop3 AS
 	SUM(CASE WHEN Response = 'Did Not Ring In' THEN 1 ELSE 0 END) AS DNRCount,
 	SUM(CASE WHEN Response = 'Did Not Ring In' THEN Value ELSE 0 END) AS DNRValue
 FROM jeopardy_data
-WHERE Metacategory IN ('Words', 'History', 'Geography')
+GROUP BY Game, Metacategory)
+SELECT Metacategory,
+ROUND(sum((IncorrectValue+DNRValue)/80),0) AS TotalLeft
+FROM MetaValues
+GROUP BY Metacategory
+ORDER BY TotalLeft DESC
+;	
+
+-- Average number of questions going unanswered or incorrectly answered per game, by Metacategory
+WITH MetaValues AS 
+	(SELECT Game, 
+	Metacategory,
+	COUNT(Response) AS TotalResponse,
+	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectCount,
+	SUM(CASE WHEN Response = 'Correct' THEN Value ELSE 0 END) AS CorrectValue,
+	SUM(CASE WHEN Response = 'Incorrect' THEN 1 ELSE 0 END) AS IncorrectCount,
+	SUM(CASE WHEN Response = 'Incorrect' THEN 2*Value ELSE 0 END) AS IncorrectValue,
+	SUM(CASE WHEN Response = 'Did Not Ring In' THEN 1 ELSE 0 END) AS DNRCount,
+	SUM(CASE WHEN Response = 'Did Not Ring In' THEN Value ELSE 0 END) AS DNRValue
+FROM jeopardy_data
 GROUP BY Game, Metacategory)
 SELECT Metacategory,
 ROUND(SUM(IncorrectCount+DNRCount)/80,0) AS TotalLeft
-FROM MetaValuesTop3
+FROM MetaValues
 GROUP BY Metacategory
+ORDER BY TotalLeft DESC
 ;
