@@ -133,8 +133,8 @@ SELECT ROUND(sum((IncorrectValue+DNRValue)/80),0) AS TotalLeft
 FROM MetaValues
 ;
 
--- How much am I leaving on the table in History per game?
-WITH MetaValuesHistory AS (SELECT Game,
+-- Average amount left on table in History, Geography, Words?
+WITH MetaValuesTop3 AS (SELECT Game, Metacategory,
 	COUNT(Response) AS TotalResponse,
 	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectCount,
 	SUM(CASE WHEN Response = 'Correct' THEN Value ELSE 0 END) AS CorrectValue,
@@ -143,14 +143,17 @@ WITH MetaValuesHistory AS (SELECT Game,
 	SUM(CASE WHEN Response = 'Did Not Ring In' THEN 1 ELSE 0 END) AS DNRCount,
 	SUM(CASE WHEN Response = 'Did Not Ring In' THEN Value ELSE 0 END) AS DNRValue
 FROM jeopardy_data
-WHERE Metacategory = 'History'
-GROUP BY Game)
-SELECT ROUND(SUM(IncorrectValue+DNRValue)/80,0) AS TotalLeft
-FROM MetaValuesHistory
+WHERE Metacategory IN ('Words', 'History', 'Geography')
+GROUP BY Game, Metacategory)
+SELECT Metacategory, ROUND(SUM(IncorrectValue+DNRValue)/80,0) AS TotalLeft
+FROM MetaValuesTop3
+GROUP BY Metacategory
 ;
 
--- How many History questions go unanswered or incorrectly answered per game?
-WITH MetaValuesHistory AS (SELECT Game,
+-- Average number of questions going unanswered or incorrectly answered per game (Words, History, Geography)
+WITH MetaValuesTop3 AS 
+	(SELECT Game, 
+	Metacategory,
 	COUNT(Response) AS TotalResponse,
 	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectCount,
 	SUM(CASE WHEN Response = 'Correct' THEN Value ELSE 0 END) AS CorrectValue,
@@ -159,89 +162,10 @@ WITH MetaValuesHistory AS (SELECT Game,
 	SUM(CASE WHEN Response = 'Did Not Ring In' THEN 1 ELSE 0 END) AS DNRCount,
 	SUM(CASE WHEN Response = 'Did Not Ring In' THEN Value ELSE 0 END) AS DNRValue
 FROM jeopardy_data
-WHERE Metacategory = 'History'
-GROUP BY Game)
-SELECT ROUND(SUM(IncorrectCount+DNRCount)/80,0) AS TotalLeft
-FROM MetaValuesHistory
-;
-
--- How much am I leaving on the table in Geography per game?
-WITH MetaValuesGeography AS (SELECT Game,
-	COUNT(Response) AS TotalResponse,
-	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectCount,
-	SUM(CASE WHEN Response = 'Correct' THEN Value ELSE 0 END) AS CorrectValue,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 1 ELSE 0 END) AS IncorrectCount,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 2*Value ELSE 0 END) AS IncorrectValue,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN 1 ELSE 0 END) AS DNRCount,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN Value ELSE 0 END) AS DNRValue
-FROM jeopardy_data
-WHERE Metacategory = 'Geography'
-GROUP BY Game)
-SELECT ROUND(SUM(IncorrectValue+DNRValue)/80,0) AS TotalLeft
-FROM MetaValuesGeography
-;
-
--- How many Geography questions go unanswered or incorrectly answered per game?
-WITH MetaValuesGeography AS (SELECT Game,
-	COUNT(Response) AS TotalResponse,
-	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectCount,
-	SUM(CASE WHEN Response = 'Correct' THEN Value ELSE 0 END) AS CorrectValue,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 1 ELSE 0 END) AS IncorrectCount,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 2*Value ELSE 0 END) AS IncorrectValue,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN 1 ELSE 0 END) AS DNRCount,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN Value ELSE 0 END) AS DNRValue
-FROM jeopardy_data
-WHERE Metacategory = 'Geography'
-GROUP BY Game)
-SELECT ROUND(SUM(IncorrectCount+DNRCount)/80,0) AS TotalLeft
-FROM MetaValuesGeography
-;
-
--- How much am I leavning on the table in Science per game?
-WITH MetaValuesScience AS (SELECT Game,
-	COUNT(Response) AS TotalResponse,
-	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectCount,
-	SUM(CASE WHEN Response = 'Correct' THEN Value ELSE 0 END) AS CorrectValue,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 1 ELSE 0 END) AS IncorrectCount,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 2*Value ELSE 0 END) AS IncorrectValue,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN 1 ELSE 0 END) AS DNRCount,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN Value ELSE 0 END) AS DNRValue
-FROM jeopardy_data
-WHERE Metacategory = 'Science'
-GROUP BY Game)
-SELECT ROUND(SUM(IncorrectValue+DNRValue)/80,0) AS TotalLeft
-FROM MetaValuesScience
-;
-
--- How much am I leaving on the table in Words per game?
-WITH MetaValuesWords AS (SELECT Game,
-	COUNT(Response) AS TotalResponse,
-	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectCount,
-	SUM(CASE WHEN Response = 'Correct' THEN Value ELSE 0 END) AS CorrectValue,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 1 ELSE 0 END) AS IncorrectCount,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 2*Value ELSE 0 END) AS IncorrectValue,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN 1 ELSE 0 END) AS DNRCount,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN Value ELSE 0 END) AS DNRValue
-FROM jeopardy_data
-WHERE Metacategory = 'Words'
-GROUP BY Game)
-SELECT ROUND(SUM(IncorrectValue+DNRValue)/80,0) AS TotalLeft
-FROM MetaValuesWords
-;
-
-
--- How many Words questions go unanswered or incorrectly answered per game?
-WITH MetaValuesWords AS (SELECT Game,
-	COUNT(Response) AS TotalResponse,
-	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectCount,
-	SUM(CASE WHEN Response = 'Correct' THEN Value ELSE 0 END) AS CorrectValue,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 1 ELSE 0 END) AS IncorrectCount,
-	SUM(CASE WHEN Response = 'Incorrect' THEN 2*Value ELSE 0 END) AS IncorrectValue,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN 1 ELSE 0 END) AS DNRCount,
-	SUM(CASE WHEN Response = 'Did Not Ring In' THEN Value ELSE 0 END) AS DNRValue
-FROM jeopardy_data
-WHERE Metacategory = 'Words'
-GROUP BY Game)
-SELECT ROUND(SUM(IncorrectCount+DNRCount)/80,0) AS TotalLeft
-FROM MetaValuesWords
+WHERE Metacategory IN ('Words', 'History', 'Geography')
+GROUP BY Game, Metacategory)
+SELECT Metacategory,
+ROUND(SUM(IncorrectCount+DNRCount)/80,0) AS TotalLeft
+FROM MetaValuesTop3
+GROUP BY Metacategory
 ;
