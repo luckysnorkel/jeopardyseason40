@@ -133,7 +133,7 @@ SELECT ROUND(sum((IncorrectValue+DNRValue)/80),0) AS TotalLeft
 FROM MetaValues
 ;
 
--- Average amount left on table in History, Geography, Words?
+-- Average amount left on table in Words, History, Geography
 WITH MetaValuesTop3 AS (SELECT Game, Metacategory,
 	COUNT(Response) AS TotalResponse,
 	SUM(CASE WHEN Response = 'Correct' THEN 1 ELSE 0 END) AS CorrectCount,
