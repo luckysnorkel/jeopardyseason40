@@ -76,9 +76,9 @@ The analysis of metacategory performance highlights areas of strength and opport
 **Areas for Improvement:** Lower confidence/success rates in History (38.54%/79.48%), Politics (37.5%/66.67%), and Geography (42.22%/84.23%), suggesting these as key areas for focused study.
 
 #### Scoring Implications
-Evaluating the scoring impact in some of the most frequent Metacategories reveals significant potential earnings left on the table. For Words, History and Geography, I lose out on an average of $4613, $4340, and $2828 per game, respectively. The large earnings gap in Words was particularly surprising to me, since I considered it to be one of my stronger areas prior to this analysis. But since it shows up so often (two full categories per game, on average!), the clues I'm not confident about quickly add up.
+Evaluating the scoring impact in some of the most frequent Metacategories reveals significant potential earnings left on the table. For Words, History and Geography, I lose out on an average of $4595, $4327, and $2820 per game, respectively. The large earnings gap in Words was particularly surprising to me, since I considered it to be one of my stronger areas prior to this analysis. But since it shows up so often (two full categories per game, on average!), the clues I'm not confident about quickly add up.
 
-When combined, those three Metacategories make up 37% of my per-game missed earnings. Even a 10% improvement in each would raise my Coryat average by nearly $1200. A 28% improvement would bring my Coryat average just past $25,000, the lower threshold for competitiveness. This works out to roughly 1-2 additional correct responses per game in each category. This certainly feels attainable!
+When combined, those three Metacategories make up 36.45% of my per-game missed earnings. Even a 10% improvement in each would raise my Coryat average by nearly $1200. A 28% improvement would bring my Coryat average just past $25,000, the lower threshold for competitiveness. This works out to roughly 1-2 additional correct responses per game in each category. This certainly feels attainable!
 
 ## Key Takeaways
 1. It's less important to focus on my weakest topics as it is to focus on frequent ones.
