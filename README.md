@@ -57,16 +57,100 @@ There are many ways to win *Jeopardy!*, and while a Coryat score captures some o
 Check out `jeopardy_pt1.sql` to see the SQL queries I used for my analysis.
 
 #### General Performance
+
+|countcorrect|percentcorrect|
+|------------|--------------|
+|2484        |50.90         |
+
+
 My overall rate of correct responses stands at 50.90%, indicating a balanced level of performance across all categories and rounds. A closer look at round-specific performance shows a higher success rate in the Jeopardy! round (54.33%) compared to Double Jeopardy! (47.88%) and Final Jeopardy! (38.75%). This trend suggests a strong start in the initial rounds but a need for improved strategy and focus in the latter, more challenging stages of the game.
 
+|round|total|countcorrect|percentcorrect|
+|-----|-----|------------|--------------|
+|Final Jeopardy!|80   |31          |38.75         |
+|Jeopardy!|2400 |1304        |54.33         |
+|Double Jeopardy!|2400 |1149        |47.88         |
+
 My average Coryat score was $21,770, with a low of $12,600 (yikes!) and a high of $33,400. While Coryat isn't a perfect predictor of success, the *Jeopardy!* fandom's rule of thumb is that an average Coryat between $25,000 and $30,000 puts you in a good spot to be competitive.
+
+|averagecoryat|mincoryat|maxcoryat|
+|-------------|---------|---------|
+|21770        |12600    |33400    |
+
 
 #### Daily Double and Final Jeopardy! Performance
 Interestingly, my Daily Double and Final Jeopardy correct response rates are identical, each coming in at 38.75%.
 
 The three most commonly-occuring Daily Double Metacategories are History, Geography and Science. My rate of correct responses in those categories is 25.64%, 22.22%, and 37.04%, respectively. 
 
+|metacategory|total|correctanswers|percentage|
+|------------|-----|--------------|----------|
+|History     |39   |10            |25.64     |
+|Geography   |27   |6             |22.22     |
+|Science     |27   |10            |37.04     |
+|Literature  |22   |10            |45.45     |
+|Words       |17   |8             |47.06     |
+|People      |16   |5             |31.25     |
+|Film        |9    |4             |44.44     |
+|Music       |8    |6             |75.00     |
+|Art         |6    |0             |0.00      |
+|Culture     |6    |1             |16.67     |
+|Pop Culture |5    |2             |40.00     |
+|Politics    |5    |2             |40.00     |
+|Religion    |4    |1             |25.00     |
+|Quotes      |4    |2             |50.00     |
+|Law         |4    |3             |75.00     |
+|Food        |4    |4             |100.00    |
+|Mythology   |3    |0             |0.00      |
+|Architecture|3    |1             |33.33     |
+|Sports      |3    |1             |33.33     |
+|Theater     |3    |2             |66.67     |
+|Crafts & Hobbies|3    |2             |66.67     |
+|Folklore    |2    |1             |50.00     |
+|Plants & Flowers|2    |1             |50.00     |
+|Fashion     |2    |2             |100.00    |
+|Animals     |2    |2             |100.00    |
+|Mathematics |2    |2             |100.00    |
+|Economics   |1    |0             |0.00      |
+|Philosophy  |1    |0             |0.00      |
+|U.S. Cities |1    |0             |0.00      |
+|Business    |1    |0             |0.00      |
+|States      |1    |0             |0.00      |
+|Transportation|1    |0             |0.00      |
+|Military    |1    |0             |0.00      |
+|Colleges & Universities|1    |1             |100.00    |
+|Shakespeare |1    |1             |100.00    |
+|Monarchy    |1    |1             |100.00    |
+|Education   |1    |1             |100.00    |
+|Languages   |1    |1             |100.00    |
+
+
+
 The three most commonly-occuring Final Jeopardy! Metacategories are History, Literature and Geography. My rate of correct responses are 14.29%, 25%, and 50%, respectively.
+
+|metacategory|total|correctanswers|percentage|
+|------------|-----|--------------|----------|
+|History     |21   |3             |14.29     |
+|Literature  |12   |3             |25.00     |
+|Geography   |12   |6             |50.00     |
+|Science     |5    |1             |20.00     |
+|Music       |5    |3             |60.00     |
+|People      |4    |3             |75.00     |
+|Business    |3    |2             |66.67     |
+|Art         |2    |0             |0.00      |
+|Monarchy    |2    |0             |0.00      |
+|Languages   |2    |1             |50.00     |
+|Words       |2    |1             |50.00     |
+|Mythology   |2    |2             |100.00    |
+|Television  |2    |2             |100.00    |
+|Theater     |1    |0             |0.00      |
+|Politics    |1    |0             |0.00      |
+|Pop Culture |1    |1             |100.00    |
+|Culture     |1    |1             |100.00    |
+|Religion    |1    |1             |100.00    |
+|Film        |1    |1             |100.00    |
+
+
 
 #### Confidence and Win Rate by Metacategory
 The analysis of metacategory performance highlights areas of strength and opportunities for growth:
@@ -75,8 +159,53 @@ The analysis of metacategory performance highlights areas of strength and opport
 
 **Areas for Improvement:** Lower confidence/success rates in History (38.54%/79.48%), Politics (37.5%/66.67%), and Geography (42.22%/84.23%), suggesting these as key areas for focused study.
 
+|metacategory|questioncount|percentattempt|totalpercentcorrect|percentcorrectofattempted|
+|------------|-------------|--------------|-------------------|-------------------------|
+|Words       |837          |63.56         |61.17              |96.24                    |
+|History     |493          |38.54         |30.63              |79.48                    |
+|Science     |347          |57.06         |51.01              |89.40                    |
+|Geography   |315          |42.22         |35.56              |84.23                    |
+|Literature  |302          |51.32         |46.03              |89.69                    |
+|People      |265          |47.92         |44.91              |93.72                    |
+|Music       |265          |69.43         |66.04              |95.12                    |
+|Film        |225          |67.56         |65.78              |97.37                    |
+|Pop Culture |208          |73.56         |71.15              |96.72                    |
+|Food        |187          |77.54         |73.26              |94.48                    |
+|Sports      |182          |38.46         |32.97              |85.73                    |
+|Crafts & Hobbies|126          |61.90         |55.56              |89.76                    |
+|Culture     |117          |46.15         |42.74              |92.61                    |
+|Animals     |116          |56.03         |53.45              |95.40                    |
+|Mathematics |70           |44.29         |41.43              |93.54                    |
+|Religion    |67           |34.33         |31.34              |91.29                    |
+|Art         |63           |47.62         |38.10              |80.01                    |
+|Languages   |54           |72.22         |70.37              |97.44                    |
+|Television  |54           |72.22         |70.37              |97.44                    |
+|Business    |51           |60.78         |54.90              |90.33                    |
+|Politics    |48           |37.50         |25.00              |66.67                    |
+|Architecture|45           |35.56         |31.11              |87.49                    |
+|Quotes      |40           |45.00         |35.00              |77.78                    |
+|Mythology   |40           |52.50         |50.00              |95.24                    |
+|Fashion     |39           |71.79         |69.23              |96.43                    |
+|Theater     |36           |61.11         |58.33              |95.45                    |
+|Law         |32           |50.00         |46.88              |93.76                    |
+|Plants & Flowers|31           |64.52         |58.06              |89.99                    |
+|Landmarks   |27           |44.44         |40.74              |91.67                    |
+|Games       |26           |53.85         |50.00              |92.85                    |
+|Colleges & Universities|25           |64.00         |64.00              |100.00                   |
+|States      |23           |43.48         |43.48              |100.00                   |
+|Economics   |21           |47.62         |47.62              |100.00                   |
+|U.S. Cities |18           |72.22         |66.67              |92.32                    |
+|Monarchy    |15           |26.67         |13.33              |49.98                    |
+|Philosophy  |15           |40.00         |26.67              |66.68                    |
+|Military    |15           |53.33         |33.33              |62.50                    |
+|Folklore    |12           |75.00         |75.00              |100.00                   |
+|Shakespeare |12           |75.00         |50.00              |66.67                    |
+|Technology  |5            |60.00         |60.00              |100.00                   |
+|Education   |5            |80.00         |80.00              |100.00                   |
+
+
 #### Scoring Implications
-Evaluating the scoring impact in some of the most frequent Metacategories reveals significant potential earnings left on the table. For Words, History and Geography, I lose out on an average of $4595, $4327, and $2820 per game, respectively. The large earnings gap in Words was particularly surprising to me, since I considered it to be one of my stronger areas prior to this analysis. But since it shows up so often (two full categories per game, on average!), the clues I'm not confident about quickly add up.
+Evaluating the scoring impact by Metacategory reveals significant potential earnings left on the table. For Words, History and Geography, I lose out on an average of $4595, $4327, and $2820 per game, respectively. The large earnings gap in Words was particularly surprising to me, since I considered it to be one of my stronger areas prior to this analysis. But since it shows up so often (two full categories per game, on average!), the clues I'm not confident about quickly add up.
 
 When combined, those three Metacategories make up 36.45% of my per-game missed earnings. Even a 10% improvement in each would raise my Coryat average by nearly $1200. A 28% improvement would bring my Coryat average just past $25,000, the lower threshold for competitiveness. This works out to roughly 1-2 additional correct responses per game in each category. This certainly feels attainable!
 
