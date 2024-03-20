@@ -222,7 +222,7 @@ Here are some of the resources I'll be using for the first phase of my studying 
 - History: Sporcle, John Hirst's *The Shortest History of Europe*, Daniel O'Brien's *How To Fight Presidents*, Ken Jennings' *Junior Genius Guide to U.S. Presidents*
 - Geography: Sporcle, [Lizardpoint](https://lizardpoint.com/geography/), Ken Jennings' *Junior Genius Guide to Maps & Geography*
 
-Want to track my progress as the season continues? Check out my [Tableau dashboard](https://public.tableau.com/app/profile/katelyn.mueller.mclean/viz/JeopardySeason40PersonalPerformance/Dashboard1), updated weekly.
+Want to track my progress as the season continues? Check out my [Tableau dashboard](https://public.tableau.com/app/profile/katelyn.mueller.mclean/viz/JeopardySeason40PersonalPerformance/newdash), updated weekly.
 
 ## Future Work (After End of Season)
 - Analyze differences between tournament and regular game stats and performance.
