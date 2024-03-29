@@ -1,4 +1,4 @@
-# jeopardyseason40
+# Jeopardy! Season 40 Personal Performance
 Tracking my performance across *Jeopardy!*'s 40th season
 
 ## Objective
