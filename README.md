@@ -1,4 +1,4 @@
-# Jeopardy! Season 40 Personal Performance
+# Trying Not To Lose On Jeopardy!
 Tracking my performance across *Jeopardy!*'s 40th season
 
 ## Objective
